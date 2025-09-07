@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Heart, Sparkles, Palette, Camera, Brush, Star, Flower2, Moon, Sun, Feather, Zap, Music, BookOpen, PenTool }  from 'lucide-react';
+import { Heart, Sparkles, Palette, Camera, Brush, Star, Flower2, Moon, Sun, Feather }  from 'lucide-react';
 import Art1 from '../../public/art.jpg'
 import Art2 from '../../public/hand.jpg'
 import Art3 from '../../public/krishna_saday.jpg'
@@ -11,13 +11,22 @@ import Image from 'next/image';
 
 export default function NiveditaPortfolio() {
  const [isLoaded, setIsLoaded] = useState(false);
-  const [selectedArt, setSelectedArt] = useState<any>(null);
+  type Artwork = {
+    id: number;
+    title: string;
+    category: string;
+    description: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    image: any;
+    color: string;
+  };
+
+  const [selectedArt, setSelectedArt] = useState<Artwork | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [activeFilter, setActiveFilter] = useState('all');
 
   useEffect(() => {
     setIsLoaded(true);
-    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleMouseMove = (e: { clientX: any; clientY: any; }) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -160,7 +169,7 @@ export default function NiveditaPortfolio() {
           {/* Animated Quote */}
           <div className={`transform transition-all duration-1500 delay-500 ${isLoaded ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
             <p className="text-lg md:text-xl text-gray-600 italic font-light max-w-2xl mx-auto mb-8">
-              "Art is not what you see, but what you make others see"
+              &ldquo;Art is not what you see, but what you make others see&ldquo;
             </p>
           </div>
 
