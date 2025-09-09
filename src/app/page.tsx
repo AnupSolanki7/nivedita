@@ -14,10 +14,10 @@ import {
   Feather,
   ArrowUp,
 } from "lucide-react";
-import Art1 from "../../public/A.jpeg";
+import Art4 from "../../public/bloom.jpeg";
 import Art2 from "../../public/Art.jpeg";
 import Art3 from "../../public/Krishna.jpeg";
-import Art4 from "../../public/bloom.jpeg";
+import Art1 from "../../public/A.jpeg";
 import Art5 from "../../public/butterfly.jpeg";
 import Image from "next/image";
 
