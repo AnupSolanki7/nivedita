@@ -20,18 +20,38 @@ import Art3 from "../../public/Krishna.jpeg";
 import Art4 from "../../public/bloom.jpeg";
 import Art5 from "../../public/butterfly.jpeg";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function NiveditaPortfolio() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [selectedArt, setSelectedArt] = useState<any>(null);
+  const [selectedArt, setSelectedArt] = useState<null | {
+    id: number;
+    title: string;
+    category: string;
+    description: string;
+    image: typeof Art1;
+    color: string;
+  }>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     setIsLoaded(true);
     
-    const handleMouseMove = (e: { clientX: any; clientY: any; }) => {
+    interface MousePosition {
+      x: number;
+      y: number;
+    }
+
+    interface Artwork {
+      id: number;
+      title: string;
+      category: string;
+      description: string;
+      image: typeof Art1;
+      color: string;
+    }
+
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -58,7 +78,7 @@ export default function NiveditaPortfolio() {
     };
   }, []);
 
-  const scrollToSection = (sectionId:any) => {
+  const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
       window.scrollTo({
